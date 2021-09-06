@@ -40,6 +40,7 @@ class NovaVisualComposer extends Field implements \Laravel\Nova\Contracts\Deleta
             }
 
             foreach ($model->{$this->attribute} as $row) {
+                $row = (object) $row;
                 if (!class_exists($row->template) || !method_exists($row->template, 'prune') || empty($row->content)) {
                     continue;
                 }
